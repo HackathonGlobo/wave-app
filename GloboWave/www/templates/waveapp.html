@@ -1,0 +1,17 @@
+<ion-view>
+    <ion-content>
+      <div class="gshow-card" ng-repeat="card in cards | reverse" back-img="{{card.img}}" ui-sref="aipim">
+        <div class="card-backdrop"></div>
+        <div class="card-backdrop-bottom"></div>
+        <span class="caption">
+          {{card.caption}}
+        </span>
+        <span class="date">
+          {{card.date}}
+        </span>
+        <h1 class="title">{{card.title}}</h1>
+      </div>
+    </ion-content>
+    <div class="bar bar-footer" id="wave-container">
+    </div>
+</ion-view>

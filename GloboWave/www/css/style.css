@@ -1,0 +1,207 @@
+/* Empty. Add your own CSS if you like */
+
+.bar.bar-header {
+    background-color: #EC7D00;
+    border-bottom: none;
+    padding: 5px;
+    height: 40px;
+}
+
+button.back-button {
+    color: white !important;
+    margin-left: 5px !important;
+}
+
+.platform-ios button.back-button {
+    margin-top: 20px !important;
+}
+
+.platform-ios .bar.bar-header {
+    height: 60px;
+}
+
+.platform-android .bar.bar-header .title.title-left.header-item {
+    left: 0 !important;
+}
+
+.bar.bar-header .title {
+    text-align: center;
+}
+
+.bar.bar-header img{
+    height: 35px;
+    padding-top: 4px;
+    padding-bottom: 2px;
+    margin: 0 auto !important;
+}
+
+.platform-ios .bar.bar-header .title {
+    margin-top: 20px;
+}
+
+ion-content {
+    margin-top: -2px !important;
+}
+
+.platform-ios ion-content {
+    margin-top: 15px !important;    
+}
+
+.bar.bar-footer {
+    height: 80px;
+    padding: 10px 0;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.gshow-card {
+    margin: 10px;
+    margin-bottom: 15px;
+    height: 200px;
+    background-color: #EEE;
+    position: relative;
+    background-position: center;
+}
+
+.gshow-card .caption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    margin: 10px;
+    text-transform: uppercase;
+    color: white;
+    font-family: "Open Sans", "Helvetica Neue";
+    font-weight: 700;
+    padding-bottom: 5px;
+    border-bottom: 3px solid #EC7D00;
+    font-size: 16px;
+}
+
+.gshow-card .date {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    margin: 10px;
+    text-transform: uppercase;
+    color: white;
+    font-family: "Open Sans", "Helvetica Neue";
+    font-size: 15px;
+}
+
+.gshow-card .title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    margin: 10px;
+    color: white;
+    font-family: "Open Sans", "Helvetica Neue";
+    font-size: 26px;
+    font-weight: 800;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+.gshow-card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.gshow-card .card-backdrop {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    background-color: black;
+
+    background: rgb(0, 0, 0);
+    background: -moz-linear-gradient(90deg, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 90%);
+    background: -webkit-linear-gradient(90deg, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 90%);
+    background: -o-linear-gradient(90deg, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 90%);
+    background: -ms-linear-gradient(90deg, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 90%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 90%);
+}
+
+.gshow-card .card-backdrop-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 90px;
+    background-color: black;
+
+    background: rgb(0, 0, 0);
+    background: -moz-linear-gradient(270deg, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 90%);
+    background: -webkit-linear-gradient(270deg, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 90%);
+    background: -o-linear-gradient(270deg, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 90%);
+    background: -ms-linear-gradient(270deg, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 90%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 90%);
+}
+
+
+.in-container .img-title {
+    height: 150px;
+    background-image: url('../img/aipim.jpeg');
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 20px;
+}
+
+.in-container .img-title h1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    margin: 10px;
+    color: white;
+    font-family: "Open Sans", "Helvetica Neue";
+    font-size: 26px;
+    font-weight: 800;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4); 
+}
+
+.in-container .img-title .title-backdrop {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background-color: black;
+
+    background: rgb(0, 0, 0);
+    background: -moz-linear-gradient(270deg, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 90%);
+    background: -webkit-linear-gradient(270deg, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 90%);
+    background: -o-linear-gradient(270deg, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 90%);
+    background: -ms-linear-gradient(270deg, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 90%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 90%);
+}
+
+.in-container .text {
+    padding: 0 10px;
+}
+
+.in-container .text h2 {
+    font-family: "Open Sans", "Helvetica Neue";
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 26px;
+    color: #222;
+}
+
+.in-container .text h3 {
+    font-family: "Open Sans", "Helvetica Neue";
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 22px;
+    color: #888;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #CCC;
+}
+
+.in-container .text p {
+    font-family: "Open Sans", "Helvetica Neue";
+    font-size: 15px;
+    color: #444;
+}
