@@ -33,8 +33,9 @@ angular.module('WaveApp')
     $scope.cards.push(card);
 
     $scope.openPage = function(card) {
-        if(card.is_merchan) 
-            $state.go('checkout');
+        if(card.is_merchan && cordova) 
+            //$state.go('checkout');
+            cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=yes');
         else
             $state.go('aipim');
     }
@@ -91,7 +92,7 @@ angular.module('WaveApp')
                     streamToWebAudio: true
                 });
             }
-            console.log(JSON.stringify(dataArray) + ",")
+            analyser.getByteFrequencyData(dataArray);
             // 21k
             if(dataArray[896] > 45) {
                 $scope.fetchCard(1);
