@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('WaveApp', ['ionic'])
+angular.module('WaveApp', ['ionic', 'ngAnimate'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -45,4 +45,7 @@ angular.module('WaveApp', ['ionic'])
   //Ajeitar o backbutton
   $ionicConfigProvider.backButton.text('');
   $ionicConfigProvider.backButton.previousTitleText(false);
-});
+})
+
+.value('endpoint', 'http://hackglobo-hackathonglobo-api.cloudapps.hackaton.solutionarchitectsredhat.com.br')
+

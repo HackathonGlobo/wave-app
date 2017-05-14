@@ -53,6 +53,45 @@ ion-content {
     background-color: rgba(255, 255, 255, 0.9);
 }
 
+.play-wrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.play-ball {
+    position: relative;
+    left: -50%;
+    top: -20px;
+    color: #EC7D00;
+    width: 40px;
+    height: 40px !important;
+    text-align: center;
+}
+
+.play-ball span {
+    font-size: 20px;
+    position: relative;
+    top: 9px;
+    left: 1px;
+    transition: all 0.3s;
+}
+
+.play-ball span.big{
+    font-size: 34px;
+    top:10px;
+    left: 2px;
+    transition: all 0.5s;
+}
+
+.play-ball span.small{
+    font-size: 6px;
+    top:8px;
+    left: 0px;
+}
+
+
+
 .gshow-card {
     margin: 10px;
     margin-bottom: 15px;
@@ -138,6 +177,23 @@ ion-content {
     background: -o-linear-gradient(270deg, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 90%);
     background: -ms-linear-gradient(270deg, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 90%);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 90%);
+}
+
+.gshow-card.merchan {
+    height: 100px;
+}
+
+.gshow-card.merchan .title {
+    font-size: 22px;
+    bottom: 15px;
+}
+
+.gshow-card.merchan .caption {
+    bottom: 0;
+    top: auto;
+    margin-bottom: 0;
+    border-bottom: 0;
+    font-size: 14px;
 }
 
 

@@ -1,6 +1,6 @@
 angular.module('WaveApp')
 
-.controller('AppCtrl', function($scope, waveService) {
+.controller('AppCtrl', function($scope, waveService, $timeout) {
 
     var siriWave = new SiriWave({
         container: document.getElementById('wave-container'),
@@ -31,17 +31,27 @@ angular.module('WaveApp')
     card.img = "img/aipim.jpeg";
     $scope.cards.push(card);
 
+
     $scope.fetchCard = function(code) {
-        waveService.fetch(code).then(function(card) {
+
+        if(code == $scope.lastFetch) return;
+
+        $scope.lastFetch = code;
+        waveService.fetch(code).then(function(response) {
+            var card = response.data;
+
+            card.date = card.is_merchan ? 'Patrocinado' : 'Agora';
+
             $scope.cards.push(card);
+            navigator.vibrate(50);
         });
     }
 
 })
 
-.service('waveService', function($q, $http) {
+.service('waveService', function($q, $http, endpoint) {
     this.fetch = function(code) {
-
+        return $http.get(endpoint+'/waves?code='+code);
     }
 })
 
