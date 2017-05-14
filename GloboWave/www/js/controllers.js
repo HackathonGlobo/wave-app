@@ -47,42 +47,45 @@ angular.module('WaveApp')
         });
     }
 
-    audioinput.start({
-        streamToWebAudio: true
-    });
+    function runAudio() {
+        audioinput.start({
+            streamToWebAudio: true
+        }); 
 
-    siriWave.setAmplitude(1);
-    analyser = audioinput.getAudioContext().createAnalyser();
-    analyser.fftSize = 2048;
-    audioinput.connect(analyser);
+        siriWave.setAmplitude(1);
+        analyser = audioinput.getAudioContext().createAnalyser();
+        analyser.fftSize = 2048;
+        audioinput.connect(analyser);
 
-    var dataArray = new Uint8Array(analyser.frequencyBinCount); // Uint8Array should be the same length as the frequencyBinCount 
+        var dataArray = new Uint8Array(analyser.frequencyBinCount); // Uint8Array should be the same length as the frequencyBinCount 
 
-    analyseCycle();
+        analyseCycle();
 
-    function analyseCycle() {
-        if (!audioinput.isCapturing()) {
-            audioinput.start({
-                streamToWebAudio: true
-            });
-        }
-        analyser.getByteFrequencyData(dataArray);
+        function analyseCycle() {
+            if (!audioinput.isCapturing()) {
+                audioinput.start({
+                    streamToWebAudio: true
+                });
+            }
+            analyser.getByteFrequencyData(dataArray);
 
-        // 21k
-        if(dataArray[896] > 120) {
+            // 21k
+            if(dataArray[896] > 120) {
                 $scope.fetchCard(1);
                 audioinput.stop();
                 $timeout(analyseCycle, 12000);
-            }
-        // 21.5k   
-        } else if (dataArray[917] > 120) {
+            // 21.5k   
+            } else if (dataArray[917] > 120) {
                 $scope.fetchCard(2);
                 audioinput.stop();
                 $timeout(analyseCycle, 12000);
-        } else {
-            $timeout(analyseCycle, 1000);
+            } else {
+                $timeout(analyseCycle, 500);
+            }
         }
     }
+
+    $timeout(runAudio, 1000);
 
 })
 
