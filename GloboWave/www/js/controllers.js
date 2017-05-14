@@ -67,15 +67,14 @@ angular.module('WaveApp')
                     streamToWebAudio: true
                 });
             }
-            analyser.getByteFrequencyData(dataArray);
-
+            console.log(JSON.stringify(dataArray) + ",")
             // 21k
-            if(dataArray[896] > 120) {
+            if(dataArray[896] > 45) {
                 $scope.fetchCard(1);
                 audioinput.stop();
                 $timeout(analyseCycle, 12000);
             // 21.5k   
-            } else if (dataArray[917] > 120) {
+            } else if (dataArray[917] > 45) {
                 $scope.fetchCard(2);
                 audioinput.stop();
                 $timeout(analyseCycle, 12000);
