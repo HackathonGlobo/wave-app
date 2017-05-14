@@ -256,8 +256,21 @@ ion-content {
     border-bottom: 1px solid #CCC;
 }
 
+.in-container .text h4 {
+    font-family: "Open Sans", "Helvetica Neue";
+    font-weight: 600;
+    font-size: 18px;
+    color: #666;
+    text-align: center;
+}
+
 .in-container .text p {
     font-family: "Open Sans", "Helvetica Neue";
     font-size: 15px;
     color: #444;
+}
+
+.in-container .text .v-button {
+    margin: 0 auto;
+    display: block;
 }
