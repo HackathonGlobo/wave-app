@@ -1,13 +1,13 @@
 angular.module('WaveApp')
 
-.controller('AppCtrl', function($scope, waveService, $timeout) {
+.controller('AppCtrl', function($scope, waveService, $timeout, $interval) {
 
     var siriWave = new SiriWave({
         container: document.getElementById('wave-container'),
         height: 80,
         width: 600,
         cover: true,
-        amplitude: 1,
+        amplitude: 0,
         speed: 0.15,
         color: '#EC7D00'
     });
@@ -48,12 +48,21 @@ angular.module('WaveApp')
 
         alert("iniciando audio");
 
+        siriWave.setAmplitude(1);
+
         audioinput.start({
             streamToWebAudio: true
         });
         analyser = audioinput.getAudioContext().createAnalyser();
         analyser.fftSize = 2048;
         audioinput.connect(analyser);
+
+        var dataArray = new Uint8Array(analyser.frequencyBinCount); // Uint8Array should be the same length as the frequencyBinCount 
+        
+        $interval(function() {
+            analyser.getByteFrequencyData(dataArray);
+            console.log(dataArray);
+        }, 500);
     }
 
 })
