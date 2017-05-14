@@ -46,8 +46,6 @@ angular.module('WaveApp')
         //     navigator.vibrate(50);
         // });
 
-        alert("iniciando audio");
-
         siriWave.setAmplitude(1);
 
         audioinput.start({
@@ -61,7 +59,7 @@ angular.module('WaveApp')
         
         function analyseCycle() {
             analyser.getByteFrequencyData(dataArray);
-            if(fineArray[896] > 120) {
+            if(dataArray[896] > 120) {
                 console.log("Peguei a frequencia porra");
                 $timeout(analyseCycle(), 120000);   
             } else
