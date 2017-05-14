@@ -1,6 +1,6 @@
 angular.module('WaveApp')
 
-.controller('AppCtrl', function($scope, waveService, $timeout, $interval) {
+.controller('AppCtrl', function($scope, waveService, $timeout, $state) {
 
     var siriWave = new SiriWave({
         container: document.getElementById('wave-container'),
@@ -31,6 +31,13 @@ angular.module('WaveApp')
     card.img = "img/aipim.jpeg";
     $scope.cards.push(card);
 
+    $scope.openPage = function(card) {
+        if(card.is_merchan) 
+            $state.go('checkout');
+        else
+            $state.go('aipim');
+    }
+
 
     $scope.fetchCard = function(code) {
 
@@ -43,11 +50,16 @@ angular.module('WaveApp')
             card.date = card.is_merchan ? 'Patrocinado' : 'Agora';
 
             $scope.cards.push(card);
-            navigator.vibrate(50);
+
+            if(navigator.vibrate)
+                navigator.vibrate(50);
         });
     }
 
     function runAudio() {
+
+        if(typeof audioinput == "undefined") return;
+
         audioinput.start({
             streamToWebAudio: true
         }); 
@@ -86,6 +98,9 @@ angular.module('WaveApp')
 
     $timeout(runAudio, 1000);
 
+})
+
+.controller("CheckoutCtrl", function($scope) {
 })
 
 .service('waveService', function($q, $http, endpoint) {

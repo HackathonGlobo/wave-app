@@ -38,6 +38,11 @@ angular.module('WaveApp', ['ionic', 'ngAnimate'])
     url: '/aipim',
     templateUrl: 'templates/aipim.html'
   })
+  .state('checkout', {
+    url: '/checkout',
+    templateUrl: 'templates/checkout.html',
+    controller: 'CheckoutCtrl'
+  })
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app');
