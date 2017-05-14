@@ -34,12 +34,7 @@ angular.module('WaveApp')
 
     $scope.openPage = function(card) {
         if(card.is_merchan && cordova) 
-            //$state.go('checkout');
-            cordova.ThemeableBrowser.open('http://apache.org', '_blank', {
-                toolbar : {
-                    color: '#EC7D00'
-                }
-            });
+            cordova.InAppBrowser.open('http://apache.org', '_blank');
         else
             $state.go('aipim');
     }
