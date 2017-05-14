@@ -59,7 +59,8 @@ angular.module('WaveApp')
         
         function analyseCycle() {
             analyser.getByteFrequencyData(dataArray);
-            console.log(JSON.stringify(dataArray));
+            console.log(dataArray[915]);
+            console.log(dataArray[925]);
             // if(dataArray[896] > 120) {
             //     console.log("Peguei a frequencia porra");
             //    $timeout(analyseCycle, 120000);   
