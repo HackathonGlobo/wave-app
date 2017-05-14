@@ -206,6 +206,10 @@ ion-content {
     margin-bottom: 20px;
 }
 
+.in-container .img-title.img-play{
+    background-image: url('../img/play.jpg');
+}
+
 .in-container .img-title h1 {
     position: absolute;
     bottom: 0;
