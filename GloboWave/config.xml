@@ -85,4 +85,5 @@
     <plugin name="cordova-plugin-device" spec="~1.1.4" />
     <plugin name="cordova-plugin-vibration" spec="~2.1.5" />
     <engine name="android" spec="~5.2.2" />
+    <plugin name="cordova-plugin-audioinput" spec="~0.3.0" />
 </widget>

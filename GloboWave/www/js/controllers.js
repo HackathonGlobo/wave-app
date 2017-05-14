@@ -34,17 +34,27 @@ angular.module('WaveApp')
 
     $scope.fetchCard = function(code) {
 
-        if(code == $scope.lastFetch) return;
+        // if(code == $scope.lastFetch) return;
 
-        $scope.lastFetch = code;
-        waveService.fetch(code).then(function(response) {
-            var card = response.data;
+        // $scope.lastFetch = code;
+        // waveService.fetch(code).then(function(response) {
+        //     var card = response.data;
 
-            card.date = card.is_merchan ? 'Patrocinado' : 'Agora';
+        //     card.date = card.is_merchan ? 'Patrocinado' : 'Agora';
 
-            $scope.cards.push(card);
-            navigator.vibrate(50);
+        //     $scope.cards.push(card);
+        //     navigator.vibrate(50);
+        // });
+
+        alert("iniciando audio");
+
+        audioinput.start({
+            streamToWebAudio: true,
+            audioContext: audioContext // To ensure that the audioinput plugin uses the same audioContext as the PitchDetect library
         });
+        analyser = audioContext.createAnalyser();
+        analyser.fftSize = 2048;
+        audioinput.connect(analyser);
     }
 
 })
