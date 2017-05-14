@@ -49,10 +49,9 @@ angular.module('WaveApp')
         alert("iniciando audio");
 
         audioinput.start({
-            streamToWebAudio: true,
-            audioContext: audioContext // To ensure that the audioinput plugin uses the same audioContext as the PitchDetect library
+            streamToWebAudio: true
         });
-        analyser = audioContext.createAnalyser();
+        analyser = audioinput.getAudioContext().createAnalyser();
         analyser.fftSize = 2048;
         audioinput.connect(analyser);
     }
