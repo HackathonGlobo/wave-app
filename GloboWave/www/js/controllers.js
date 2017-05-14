@@ -59,11 +59,17 @@ angular.module('WaveApp')
 
         var dataArray = new Uint8Array(analyser.frequencyBinCount); // Uint8Array should be the same length as the frequencyBinCount 
         
-        $interval(function() {
+        function analyseCycle = function() {
             analyser.getByteFrequencyData(dataArray);
-            fineArray = dataArray.slice(890, 910);
-            console.log(JSON.stringify(fineArray));
-        }, 2000);
+            if(fineArray[896] > 120) {
+                console.log("Peguei a frequencia porra");
+                $timeout(analyseCycle(), 120000);   
+            } else
+                $timeout(analyseCycle(), 2000);       
+
+        }
+
+        analyseCycle();
     }
 
 })
