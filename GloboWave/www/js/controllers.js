@@ -32,8 +32,9 @@ angular.module('WaveApp')
     $scope.cards.push(card);
 
     $scope.openPage = function(card) {
-        if(card.is_merchan) 
-            $state.go('checkout');
+        if(card.is_merchan && cordova) 
+            //$state.go('checkout');
+            cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=yes');
         else
             $state.go('aipim');
     }
@@ -80,8 +81,6 @@ angular.module('WaveApp')
                 });
             }
             analyser.getByteFrequencyData(dataArray);
-            fineArray = dataArray.slice(850, 950);
-            console.log(JSON.stringify(fineArray));
 
             // 21k
             if(dataArray[896] > 50) {

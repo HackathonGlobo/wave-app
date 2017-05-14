@@ -1,6 +1,6 @@
 <ion-view>
     <ion-content>
-      <div class="gshow-card" ng-repeat="card in cards | reverse" back-img="{{card.img}}" ng-click="openPage(card)" ng-class="card.is_merchan ? 'merchan' : ''">
+      <div class="gshow-card fx-zoom-down fx-speed-500" ng-repeat="card in cards | reverse" back-img="{{card.img}}" ng-click="openPage(card)" ng-class="card.is_merchan ? 'merchan' : ''">
         <div class="card-backdrop"></div>
         <div class="card-backdrop-bottom"></div>
         <span class="caption">
@@ -12,6 +12,6 @@
         <h1 class="title">{{card.title}}</h1>
       </div>
     </ion-content>
-    <div class="bar bar-footer" id="wave-container" ng-click="toggleAudio()">
+    <div class="bar bar-footer" id="wave-container" ng-click="fetchCard(2)">
     </div>
 </ion-view>
