@@ -58,19 +58,26 @@ angular.module('WaveApp')
         var dataArray = new Uint8Array(analyser.frequencyBinCount); // Uint8Array should be the same length as the frequencyBinCount 
         
         function analyseCycle() {
+            if (!audioinput.isCapturing()) {
+                audioinput.start({
+                    streamToWebAudio: true
+                });
+            }
             analyser.getByteFrequencyData(dataArray);
             console.log("21k:" + dataArray[896] + ", 21,5k:" + dataArray[917]);
             // 21k
             if(dataArray[896] > 120) {
                 console.log("TA SAINDO DA JAULA O MONSTRO");
-                $timeout(analyseCycle, 120000);
+                audioinput.stop();
+                $timeout(analyseCycle, 12000);
 
             // 21.5k   
             } else if (dataArray[917] > 120) {
                 console.log("É HORA DO SHOW");
-                $timeout(analyseCycle, 120000);       
+                audioinput.stop();
+                $timeout(analyseCycle, 12000);       
             } else {
-                $timeout(analyseCycle, 2000);
+                $timeout(analyseCycle, 1000);
             }
 
         }
