@@ -34,7 +34,7 @@ angular.module('WaveApp')
 
     $scope.openPage = function(card) {
         if(card.is_merchan && cordova) 
-            cordova.InAppBrowser.open('http://apache.org', '_blank');
+            cordova.InAppBrowser.open('https://hackathonglobo.github.io/checkoutPage/', '_blank');
         else
             $state.go('aipim');
     }
