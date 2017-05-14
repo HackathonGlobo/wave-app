@@ -34,55 +34,54 @@ angular.module('WaveApp')
 
     $scope.fetchCard = function(code) {
 
-        // if(code == $scope.lastFetch) return;
+        if(code == $scope.lastFetch) return;
 
-        // $scope.lastFetch = code;
-        // waveService.fetch(code).then(function(response) {
-        //     var card = response.data;
+        $scope.lastFetch = code;
+        waveService.fetch(code).then(function(response) {
+            var card = response.data;
 
-        //     card.date = card.is_merchan ? 'Patrocinado' : 'Agora';
+            card.date = card.is_merchan ? 'Patrocinado' : 'Agora';
 
-        //     $scope.cards.push(card);
-        //     navigator.vibrate(50);
-        // });
-        audioinput.start({
-            streamToWebAudio: true
+            $scope.cards.push(card);
+            navigator.vibrate(50);
         });
+    }
 
-        siriWave.setAmplitude(1);
+    audioinput.start({
+        streamToWebAudio: true
+    });
 
-        analyser = audioinput.getAudioContext().createAnalyser();
-        analyser.fftSize = 2048;
-        audioinput.connect(analyser);
+    siriWave.setAmplitude(1);
+    analyser = audioinput.getAudioContext().createAnalyser();
+    analyser.fftSize = 2048;
+    audioinput.connect(analyser);
 
-        var dataArray = new Uint8Array(analyser.frequencyBinCount); // Uint8Array should be the same length as the frequencyBinCount 
-        
-        function analyseCycle() {
-            if (!audioinput.isCapturing()) {
-                audioinput.start({
-                    streamToWebAudio: true
-                });
-            }
-            analyser.getByteFrequencyData(dataArray);
-            console.log("21k:" + dataArray[896] + ", 21,5k:" + dataArray[917]);
-            // 21k
-            if(dataArray[896] > 120) {
-                console.log("TA SAINDO DA JAULA O MONSTRO");
+    var dataArray = new Uint8Array(analyser.frequencyBinCount); // Uint8Array should be the same length as the frequencyBinCount 
+
+    analyseCycle();
+
+    function analyseCycle() {
+        if (!audioinput.isCapturing()) {
+            audioinput.start({
+                streamToWebAudio: true
+            });
+        }
+        analyser.getByteFrequencyData(dataArray);
+
+        // 21k
+        if(dataArray[896] > 120) {
+                $scope.fetchCard(1);
                 audioinput.stop();
                 $timeout(analyseCycle, 12000);
-
-            // 21.5k   
-            } else if (dataArray[917] > 120) {
-                console.log("É HORA DO SHOW");
-                audioinput.stop();
-                $timeout(analyseCycle, 12000);       
-            } else {
-                $timeout(analyseCycle, 1000);
             }
-
+        // 21.5k   
+        } else if (dataArray[917] > 120) {
+                $scope.fetchCard(2);
+                audioinput.stop();
+                $timeout(analyseCycle, 12000);
+        } else {
+            $timeout(analyseCycle, 1000);
         }
-
-        analyseCycle();
     }
 
 })
