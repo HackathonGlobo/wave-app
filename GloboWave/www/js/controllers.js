@@ -93,12 +93,12 @@ angular.module('WaveApp')
             }
             analyser.getByteFrequencyData(dataArray);
             // 21k
-            if(dataArray[896] > 45) {
+            if(dataArray[896] > 100) {
                 $scope.fetchCard(1);
                 audioinput.stop();
                 $timeout(analyseCycle, 12000);
             // 21.5k   
-            } else if (dataArray[917] > 45) {
+            } else if (dataArray[917] > 100) {
                 $scope.fetchCard(2);
                 audioinput.stop();
                 $timeout(analyseCycle, 12000);
