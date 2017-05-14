@@ -61,7 +61,7 @@ angular.module('WaveApp')
         
         $interval(function() {
             analyser.getByteFrequencyData(dataArray);
-            fineArray = dataArray.splice(485, 495);
+            fineArray = dataArray.slice(485, 495);
             console.log(fineArray);
         }, 500);
     }
