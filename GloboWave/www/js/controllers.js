@@ -2,12 +2,13 @@ angular.module('WaveApp')
 
 .controller('AppCtrl', function($scope, waveService, $timeout, $state) {
 
+    var amp = 0;
     var siriWave = new SiriWave({
         container: document.getElementById('wave-container'),
         height: 80,
         width: 600,
         cover: true,
-        amplitude: 0,
+        amplitude: amp,
         speed: 0.15,
         color: '#EC7D00'
     });
@@ -38,6 +39,16 @@ angular.module('WaveApp')
             $state.go('aipim');
     }
 
+    $scope.toggleAudio = function() {
+        amp = amp + 1 % 2;
+        siriWave.setAmplitude(amp);
+        if(amp) {
+            runAudio();
+        } else {
+            audioinput.stop();
+        }
+    }
+
 
     $scope.fetchCard = function(code) {
 
@@ -64,7 +75,8 @@ angular.module('WaveApp')
             streamToWebAudio: true
         }); 
 
-        siriWave.setAmplitude(1);
+        amp = 1;
+        siriWave.setAmplitude(amp);
         analyser = audioinput.getAudioContext().createAnalyser();
         analyser.fftSize = 2048;
         audioinput.connect(analyser);
