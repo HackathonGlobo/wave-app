@@ -45,12 +45,12 @@ angular.module('WaveApp')
         //     $scope.cards.push(card);
         //     navigator.vibrate(50);
         // });
-
-        siriWave.setAmplitude(1);
-
         audioinput.start({
             streamToWebAudio: true
         });
+
+        siriWave.setAmplitude(1);
+
         analyser = audioinput.getAudioContext().createAnalyser();
         analyser.fftSize = 2048;
         audioinput.connect(analyser);
@@ -59,13 +59,19 @@ angular.module('WaveApp')
         
         function analyseCycle() {
             analyser.getByteFrequencyData(dataArray);
-            fineArray = dataArray.slice(815, 825);
-            console.log(fineArray);
-            // if(dataArray[896] > 120) {
-            //     console.log("Peguei a frequencia porra");
-            //    $timeout(analyseCycle, 120000);   
-            // } else
-                $timeout(analyseCycle, 2000);       
+            console.log("21k:" + dataArray[896] + ", 21,5k:" + dataArray[917]);
+            // 21k
+            if(dataArray[896] > 120) {
+                console.log("TA SAINDO DA JAULA O MONSTRO");
+                $timeout(analyseCycle, 120000);
+
+            // 21.5k   
+            } else if (dataArray[917] > 120) {
+                console.log("É HORA DO SHOW");
+                $timeout(analyseCycle, 120000);       
+            } else {
+                $timeout(analyseCycle, 2000);
+            }
 
         }
 
